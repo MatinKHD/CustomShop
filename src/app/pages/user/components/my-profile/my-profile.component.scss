@@ -1,0 +1,73 @@
+@import "../../../../../styles";
+
+.user-container {
+  @include form-container(15px);
+}
+
+.user-container {
+  .user-image-container {
+    padding: 10px;
+    box-shadow: 0 0 2px 0 #00695c;
+    border-radius: 10px;
+    .profile-preview {
+      img {
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+      }
+    }
+
+    .profile-select {
+      label{
+        cursor: pointer;
+        color: #00695c;
+        text-align: center;
+        border: 2px dashed #0063562b;
+        border-radius: 10px;
+        width: 81%;
+        span{
+          font-size: 30px;
+        }
+        input{
+          display: none;
+        }
+      }
+    }
+  }
+
+  .user-info-container {
+    padding: 10px;
+    box-shadow: 0 0 2px 0 #00695c;
+    border-radius: 10px;
+
+    .user-detail-container {
+      div {
+        label {
+          font-weight: bold;
+          color: #00695c;
+          font-size: 12px;
+        }
+
+        p {
+          border: solid #00695c;
+          border-width: 0 0 1px;
+          padding: 5px;
+          font-size: 14px;
+        }
+      }
+    }
+    .button-container{
+      button{
+        padding: 5px 100px !important;
+        border-radius: 10px;
+      }
+    }
+  }
+  .save-button-container{
+    button{
+      padding: 5px 120px !important;
+      border-radius: 10px;
+    }
+  }
+}
+

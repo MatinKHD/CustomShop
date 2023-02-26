@@ -1,0 +1,104 @@
+.progresses {
+  position: relative;
+  max-width: 70%;
+  margin: auto !important;
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      z-index: 200;
+      position: relative;
+      top: 35px;
+      font-size: 30px;
+      color: #ffffff;
+      .done {
+        color: #ffffff;
+        font-size: 30px;
+        position: relative;
+        top: 5px;
+        left: 2px;
+      }
+      .circle-done {
+        color: #ffffff;
+        background: #009688;
+        height: 30px;
+        font-size: 30px;
+        border-radius: 50%;
+        position: relative;
+        width: 30px;
+        line-height: 30px;
+        text-align: center;
+        top: 0;
+        left: 0;
+      }
+      .circle {
+        background: #ffffff;
+        border-radius: 50%;
+        position: relative;
+        width: 40px;
+        height: 40px;
+        bottom: 35px;
+        left: -5px;
+        z-index: -1;
+      }
+      .circle-2 {
+        background: #009688;
+        border-radius: 50%;
+        position: relative;
+        width: 50px;
+        height: 50px;
+        bottom: 80px;
+        left: -10px;
+        z-index: -2;
+      }
+    }
+
+    .green {
+      color: #009688;
+      background-color: #009688;
+    }
+
+    li::after {
+      position: absolute;
+      top: 40px;
+      left: -10px;
+      font-size: 0.8rem;
+      width: 90px;
+    }
+
+
+    #step-1::after {
+      content: "Delivery";
+      color: black;
+    }
+
+    #step-2::after {
+      content: "Paymnet";
+      left: -5px;
+      color: black;
+    }
+
+    #step-3::after {
+      content: "Confirmation";
+      color: black;
+    }
+  }
+
+  .progress {
+    height: 10px;
+
+    .progress-bar {
+      background: #009688 !important;
+    }
+  }
+}
+
+
+
+

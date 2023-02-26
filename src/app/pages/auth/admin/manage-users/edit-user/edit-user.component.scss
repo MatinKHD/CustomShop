@@ -1,0 +1,33 @@
+@import "src/styles";
+.edit-user-container {
+  @include form-container(15px);
+}
+.header-container{
+  h2{
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px 5px #c3c3c3;
+    word-spacing: 15px;
+    *{
+      font-size: 2.5vw;
+    }
+    .user-id{
+      font-size: 2vw;
+      color: #00695c;
+    }
+  }
+}
+.role-container{
+  max-width: 75% !important;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px 5px #c3c3c3;
+  h2{
+    *{
+
+    }
+    .user-role{
+
+    }
+  }
+}

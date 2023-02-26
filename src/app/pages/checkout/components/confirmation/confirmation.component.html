@@ -1,0 +1,73 @@
+<!-----------progress bar container ---------------->
+<app-progress-bar [circlePosition]="30" [progressWidth]="100" [step1]="true" [step2]="true"
+                  [step3]="true"></app-progress-bar>
+<!-----------confirm order container --------------->
+
+<div class="row mx-auto mt-5 w-100 w-lg-60 w-xl-60 w-xxl-60">
+  <!---------delivery and payment information---------->
+  <div class="col-12 col-lg-6 col-xl-6 col-xxl-6 row mb-5">
+    <!---------- delivery information -------->
+    <div class="delivery">
+      <h5>Delivery</h5>
+      <!---- user delivery address --->
+      <div class="d-flex">
+        <span class="material-icons me-2" style="color:#607d8b; font-size: 18px">contact_mail</span>
+        <span style="font-size: 13px">{{userDeliveryInformation.address}}</span>
+      </div>
+    </div>
+
+    <!--------- payment information ------------------>
+    <div class="payment">
+      <h5>Payment</h5>
+      <div class="d-flex">
+        <span class="material-icons me-2" style="color:#607d8b; font-size: 18px">credit_card</span>
+        <span style="font-size: 13px">{{paymentInformation?.cardNumber}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!------cart information------->
+  <div class="col-12 col-lg-6 col-xl-6 col-xxl-6 mb-5">
+    <h5>Cart</h5>
+    <!---divider--->
+    <div class="divider"></div>
+    <div *ngFor="let item of cartItems" class="item-container row m-0 py-2">
+      <div class="col-3" style="border-radius: 10px">
+        <img [src]="item.product?.imageUrl" style="width: 75px">
+      </div>
+      <div class="col-7">
+        <div>{{item.product?.title}}</div>
+        <div>{{item.quantity}}</div>
+      </div>
+      <div class="col-2 price">
+        {{item.quantity * item.product?.price | currency:'USD'}}
+      </div>
+      <!---divider--->
+      <div class="divider"></div>
+    </div>
+    <!----total price-->
+    <div class="price d-flex justify-content-end mt-3">
+      <span class="me-4">Total</span>{{totalPrice | currency:'USD'}}
+    </div>
+  </div>
+
+  <!-----btn container---->
+  <div class="btn-container d-flex justify-content-between align-items-center">
+    <button
+      (click)="deletePaymentInformation()"
+      [routerLink]="'/checkout/payment'"
+      mat-raised-button
+    >
+      <span style="font-weight: bold">&hookleftarrow;</span>
+      Back to Payment
+    </button>
+    <button
+      (click)="orderConfirmed()"
+      [routerLink]="'/checkout/order-confirmed'"
+      color="primary"
+      mat-raised-button
+    >
+      Confirm Order
+    </button>
+  </div>
+</div>

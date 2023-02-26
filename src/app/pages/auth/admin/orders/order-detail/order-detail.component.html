@@ -1,0 +1,169 @@
+<div class="row mx-auto mt-5 w-100 w-lg-60 w-xl-60 w-xxl-60">
+
+  <!-- user information --->
+  <div class="col-12 col-lg-6 col-xl-6 col-xxl-6 mx-auto container">
+    <h4>User</h4>
+    <div>
+      <!---user img --->
+      <div class="user-img">
+        <img [src]="user?.imageUrl" alt="">
+      </div>
+
+
+      <!--user id--->
+      <div class="d-flex">
+        <span class="material-icons me-2">badge</span>
+        <span class="cds">
+          <span>Id</span>
+          {{user?.id}}
+        </span>
+      </div>
+
+      <!--- divider --->
+      <div class="divider"></div>
+
+      <!--user name and last name--->
+      <div class="d-flex">
+        <span class="material-icons me-2">person</span>
+        <span class="cds">
+          <span>Username</span>
+          {{user?.name}}
+        </span>
+        <span style="font-weight: 450">{{user?.lastname}}</span>
+      </div>
+
+      <!--- divider --->
+      <div class="divider"></div>
+
+      <!--user email--->
+      <div class="d-flex">
+        <span class="material-icons me-2">email</span>
+        <span class="cds">
+          <span>Email</span>
+          {{user?.email}}
+        </span>
+      </div>
+
+      <!--- divider --->
+      <div class="divider"></div>
+
+      <!--user phoneNumber--->
+      <div class="d-flex">
+        <span class="material-icons me-2">phone</span>
+        <p class="cds">
+          <span>Phone</span>
+          {{user?.phoneNumber}}
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- delivery and payment information --->
+  <div class="col-12 col-lg-5 col-xl-5 col-xxl-5 mx-auto container">
+    <h4>Delivery</h4>
+
+    <!--- delivery username -->
+    <div class="d-flex">
+      <span class="material-icons me-2">person</span>
+      <span class="cds">
+          <span>Id</span>
+        {{delivery?.name}}
+        </span>
+      <span style="font-weight: 450">{{delivery?.lastname}}</span>
+    </div>
+
+    <!--- divider --->
+    <div class="divider"></div>
+
+    <!--delivery phone number --->
+    <div class="d-flex">
+      <span class="material-icons me-2">phone</span>
+      <span class="cds">
+          <span>Id</span>
+        {{user?.id}}
+        </span>
+    </div>
+
+    <!--- divider --->
+    <div class="divider"></div>
+
+    <!---delivery city and country-->
+    <div class="d-flex">
+      <span class="material-icons me-2">person_pin_circle</span>
+      <span class="cds me-5">
+          <span>Country</span>
+        {{delivery?.country}}
+        </span>
+      <span class="cds">
+        <span>City</span>
+        {{delivery?.city}}
+      </span>
+    </div>
+
+    <!--- divider --->
+    <div class="divider"></div>
+
+    <!---delivery address--->
+    <div class="d-flex">
+      <span class="material-icons me-2">home</span>
+      <span class="cds">
+          <span>address</span>
+        {{delivery?.address}}
+        </span>
+    </div>
+
+    <!--- divider --->
+    <div class="divider"></div>
+
+    <div class="d-flex">
+      <span class="material-icons me-2">fmd_bad</span>
+      <span class="cds">
+          <span>Zipcode</span>
+        {{delivery?.zipcode}}
+        </span>
+    </div>
+
+    <!--- divider --->
+    <div class="divider"></div>
+
+    <!--- delivery phone number --->
+    <div class="d-flex">
+      <span class="material-icons me-2">phone</span>
+      <span class="cds">
+          <span>Phone</span>
+        {{delivery?.phone}}
+        </span>
+    </div>
+  </div>
+
+  <!-- cart information --->
+  <div *ngFor="let item of cartItems; let i = index" class="col-12 mx-auto container">
+    <h4>Cart</h4>
+    <div class="row m-0 py-2">
+      <div class="col-3" style="border-radius: 10px">
+        <img [src]="item.product?.imageUrl" style="width: 75px">
+      </div>
+      <div class="col-7">
+        <div style="font-weight: 450">{{item.product?.title}}</div>
+        <div class="sdc">
+          Quantity
+          <span>{{item.quantity}}</span>
+        </div>
+      </div>
+      <div class="col-2 sdc">
+        <span>{{item?.totalPrice | currency:'USD'}}</span>
+      </div>
+      <!---divider--->
+      <div class="divider"></div>
+    </div>
+    <!----total price-->
+    <div class="d-flex justify-content-end mt-3 sdc">
+      Total
+      <span class="me-4">
+        {{item?.totalPrice * i + 1 | currency:'USD'}}
+      </span>
+    </div>
+  </div>
+
+</div>

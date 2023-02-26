@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center align-items-center mx-auto container row register-container">
+  <div class="col-12 d-flex justify-content-center">
+    <h4>Register</h4>
+  </div>
+  <div [formGroup]="registerForm" class="col-12 row" style="max-width: 60%">
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput placeholder="Enter Your Name" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Lastname</mat-label>
+      <input formControlName="lastname" matInput placeholder="Enter Your Lastname" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="Enter Your Email" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Phone Number</mat-label>
+      <input formControlName="phoneNumber" matInput placeholder="0933-555-1010" required type="tel">
+    </mat-form-field>
+    <div class="col-12" formGroupName="passwordGroup">
+      <mat-form-field appearance="fill" class="col-12">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput placeholder="Enter Your Password" required type="password">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="col-12">
+        <mat-label>Confirm Password</mat-label>
+        <input formControlName="confirmPassword" matInput placeholder="Enter Your Password" required type="password">
+      </mat-form-field>
+    </div>
+    <div class="col-12">
+      <p>if you click the register button it means you agree with
+        <a mat-button color="primary" style="padding: 0 !important;">
+          terms and policy</a> of shop site.</p>
+    </div>
+    <div class="col-12">
+      <button (click)="registerClicked()" class="px-5 py-2" color="primary"
+              mat-flat-button style="border-radius: 5px">
+        Register
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="product-detail-container">
+
+  <!-------------------------------loading------------------------------------------>
+
+  <div *ngIf="loading" class="d-flex justify-content-center align-items-center">
+    <div class=" spinner-border text-primary m-5" style="width: 5rem; height: 5rem;color: #1de9b6 !important;">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+
+  <!-------------------------------product-detail------------------------------------------>
+
+  <div *ngIf="!loading" class="row">
+
+    <!-----------------product image container and add to cart component --------------------->
+    <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-4 col-xxl-3">
+      <div class="product-image-container">
+        <!------------product image ------------>
+        <div class="image-container">
+          <img [src]="product?.imageUrl">
+        </div>
+
+        <!-----add to cart buttons------>
+        <div class="add-to-cart">
+          <button (click)="addToCart()" *ngIf="quantity === undefined || quantity === 0 ;else updateQuantity"
+                  class="p-2"
+                  color="primary" mat-raised-button style="width: 100% !important;">Add To Cart
+          </button>
+
+          <!-------update quantity-------->
+          <ng-template #updateQuantity>
+            <div class="update-quantity">
+              <button (click)="removeFormCart()" color="primary" mat-flat-button>-</button>
+              <div>{{quantity}} in cart</div>
+              <button (click)="addToCart()" color="primary" mat-flat-button>+</button>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+      <!---- shop now container --->
+      <div class="shop-now-container mt-3">
+        <button
+          [class.d-none]="quantity === undefined ||  quantity === 0"
+          [routerLink]="'/checkout/review-cart'"
+          class="w-100 py-2"
+          color="primary"
+          mat-flat-button
+        >
+          Shop Now
+        </button>
+      </div>
+    </div>
+
+    <!-----------------product description container ---------------------------------------->
+    <div class="col-12 col-sm-12 col-md-6 col-lg-7 col-xl-8 col-xxl-9 pt-4 pt-sm-4 pt-md-0 pt-lg-0 pt-xl-0 pt-xxl-0">
+      <div class="product-description-container">
+
+        <!------------header that contain  title and rating of the product ------------>
+        <div class="header">
+          <div class="title">{{product?.title}}</div>
+          <div class="rating">
+            <span class="px-2">******</span>
+            <a class="px-2">143,000<span class="px-1">ratings</span></a>
+          </div>
+        </div>
+
+        <!------------divider ------------>
+        <div class="divider"></div>
+
+        <!------------category ------------>
+        <div class="product-category-column">
+          <div>Category</div>
+          <div>{{product?.category}}</div>
+        </div>
+
+        <!------------divider ------------>
+        <div class="divider"></div>
+
+        <!-------description of product------------>
+        <div class="product-description-column">
+          <div>About this item</div>
+          <div>
+            The DualShock 4 Wireless Controller for PlayStation 4 defines this generation of play, combining
+            revolutionary features and comfort with intuitive, precision controls
+            Enhanced analog sticks and trigger buttons offer unrivaled control across all titles
+            Innovative features like the touch pad, integrated light bar, built in speaker enable exciting ways to
+            experience your games
+            Note: Kindly refer to the user manual provided as a PDF manual in the product description section
+          </div>
+        </div>
+
+        <!------------divider ------------>
+        <div class="divider"></div>
+
+        <!------------price of the product ------------>
+        <div class="product-price-column">
+          <div>Price</div>
+          <p>{{product?.price | currency:'USD'}}</p>
+        </div>
+
+        <!------------divider ------------>
+        <div class="divider"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

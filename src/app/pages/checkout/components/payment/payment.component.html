@@ -1,0 +1,62 @@
+<app-progress-bar [circlePosition]="30" [progressWidth]="50" [step1]="true" [step2]="true"></app-progress-bar>
+
+<div class="row mx-auto my-5 w-100 w-lg-60 w-xl-60 w-xxl-60">
+  <!---this component includes two main containers one for selecting paypal or visa
+  and the second container is rendered on what user choose one first container---------->
+  <div class="col-12 d-flex justify-content-center align-items-center">
+    <div (click)="visa = !visa">Visa</div>
+    <div (click)="paypal = !paypal">PayPal</div>
+  </div>
+  <div *ngIf="visa" [formGroup]="paymentForm" class="col-12 row">
+    <div class="col-12 row">
+      <mat-form-field appearance="fill" class="col-6">
+        <mat-label>Card Holder Name</mat-label>
+        <input formControlName="cardHolderName" matInput required type="text">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="col-6">
+        <mat-label>Card Number</mat-label>
+        <input formControlName="cardNumber" matInput required type="number">
+      </mat-form-field>
+    </div>
+    <div class="col-12 row">
+      <p class="col-12">EndDate</p>
+      <div class="col-6 row">
+        <mat-form-field appearance="fill" class="col-6">
+          <input formControlName="month" matInput
+                 placeholder="mm" required type="number">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-6">
+          <input formControlName="year" matInput placeholder="yyyy" required type="number">
+        </mat-form-field>
+      </div>
+      <div class="col-6 row" style="margin: 0 0 0 auto">
+        <mat-form-field appearance="fill">
+          <mat-label>CVV</mat-label>
+          <input formControlName="CVV" matInput required type="number">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="paypal" class="col-12">
+
+  </div>
+  <div class="btn-container d-flex justify-content-between align-items-center">
+    <button
+      (click)="deletePaymentInformation()"
+      [routerLink]="'/checkout/delivery'"
+      mat-raised-button
+    >
+      <span style="font-weight: bold">&hookleftarrow;</span>
+      Back to Delivery
+    </button>
+    <button
+      (click)="paymentInformation()"
+      [disabled]="paymentForm.invalid"
+      [routerLink]="'/checkout/confirmation'"
+      color="primary"
+      mat-raised-button
+    >Next Step
+    </button>
+  </div>
+</div>
+

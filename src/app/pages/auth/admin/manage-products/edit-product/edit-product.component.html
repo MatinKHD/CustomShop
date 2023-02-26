@@ -1,0 +1,136 @@
+<!--------------------loading container-------------------------------------------------------->
+<div *ngIf="loading" class="d-flex justify-content-center align-items-center">
+  <div class=" spinner-border text-primary m-5" style="width: 5rem; height: 5rem;color: #1de9b6 !important;">
+    <span class="sr-only"></span>
+  </div>
+</div>
+
+
+<div *ngIf="!loading">
+
+  <!----button that redirect user to product table page--------------------------------->
+  <div class="d-flex justify-content-start ms-5 my-5">
+    <button
+      [routerLink]="'/auth/admin/manage-products'"
+      class="px-2 py-1"
+      color="accent"
+      mat-raised-button
+      style="border-radius: 5px"
+    >
+      <span style="font-weight: bold">&hookleftarrow;</span> back to users table
+    </button>
+  </div>
+  <!--------------------edit product container---------------------------------->
+  <div
+    [formGroup]="productForm"
+    class="
+      row
+      d-flex m-0
+      justify-content-center align-items-center
+    "
+  >
+
+
+    <!-------------------product form container----------------->
+    <div
+      class="
+        m-4
+        col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8 col-xxl-8
+        row container
+        justify-content-center
+        align-items-center
+        edit-product-container
+        "
+    >
+
+      <!-------------header container------------------>
+      <div>
+        <h2>Editing {{productForm?.get('title')?.value}}</h2>
+      </div>
+
+      <!---------- form container----------------->
+      <div class="col-12 row m-3" style="max-width: 75%; ">
+
+        <!-------------product id-------------->
+        <mat-form-field appearance="fill" class="col-12">
+          <mat-label>ID</mat-label>
+          <input formControlName="id" matInput placeholder="Enter ID" required type="text">
+        </mat-form-field>
+
+        <!------------product title--------------->
+        <mat-form-field appearance="fill" class="col-12">
+          <mat-label>Title</mat-label>
+          <input formControlName="title" matInput placeholder="Enter Title" required type="text">
+        </mat-form-field>
+
+        <!------------product price--------------->
+        <mat-form-field appearance="fill" class="col-12">
+          <mat-label>Price</mat-label>
+          <input formControlName="price" matInput placeholder="Enter Price" required type="number">
+        </mat-form-field>
+
+        <!---------product category------------------>
+        <mat-form-field appearance="fill">
+          <mat-label>Select</mat-label>
+          <mat-select formControlName="category" placeholder="Select A Category">
+            <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!----------product image container----------------->
+        <!----------product image label----------------->
+        <div class="col-12">
+          <label>Please Select the Product Photo From Your Device:</label>
+        </div>
+
+        <!----------product image container----------------->
+        <!---that shows file input and image preview-->
+        <div
+          class="
+            col-12
+            product-card-image-container
+            d-flex
+            flex-column flex-sm-column flex-md-column flex-lg-row flex-xl-row flex-xxl-row
+            justify-content-between
+            p-3
+           "
+        >
+          <div class="d-flex justify-content-center align-items-center">
+            <input (change)="onSelectProductPhoto($event)" placeholder="Upload File Form Your Device" required
+                   type="file">
+          </div>
+          <div class="d-flex justify-content-center align-items-center">
+            <img [src]="imagePreview ? imagePreview : this.productForm?.get('imageUrl')?.value"
+                 style="width: 100px; height: 100px; border-radius: 15px; margin-right: auto">
+          </div>
+        </div>
+
+        <!------------product button container--------------->
+        <!--that contains save and delete button-->
+        <div class="d-flex justify-content-start my-5">
+          <button (click)="save()" [disabled]="productForm.invalid" class="px-5 py-2 mx-1" color="primary"
+                  mat-raised-button
+                  style="border-radius: 5px">Save
+          </button>
+          <button (click)="delete()" [disabled]="productForm.invalid" class="px-5 py-2 mx-1" color="warn"
+                  mat-raised-button
+                  style="border-radius: 5px">Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-------------------product card----------------->
+    <div
+      class="
+        m-4
+        col-12 col-sm-12 col-md-1 col-lg-3 col-xl-3 col-xxl-3
+        d-flex justify-content-center align-items-center
+        product-card-container
+      "
+    >
+      <app-product-card [product]="product"></app-product-card>
+    </div>
+
+  </div>
+</div>

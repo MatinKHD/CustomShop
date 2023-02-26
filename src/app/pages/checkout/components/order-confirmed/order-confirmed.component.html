@@ -1,0 +1,31 @@
+<!------------------------ progress bar container ---------------------->
+<app-progress-bar [progressWidth]="100" [step1]="true" [step2]="true" [step3]="true" [step4]="true"></app-progress-bar>
+
+<!------------------- order confirmed container------------------------------>
+
+<div class="row mx-auto mt-5 w-100 w-lg-60 w-xl-60 w-xxl-60">
+  <!--- done icon container ------->
+  <div class="d-flex justify-content-center align-items-center done-icon-container">
+    <span></span>
+    <span class="material-icons">done</span>
+  </div>
+
+  <!--- congratulation container ----->
+  <div class="congratulation mt-5">
+    <p>Congratulation. Your order is accepted.</p>
+    <p>Let me be clear. Sag Biyad Roohe Babat.</p>
+  </div>
+
+  <!--- btn container --->
+  <div class="d-flex justify-content-center align-items-center mt-5">
+    <button
+      [routerLink]="'/user/my-orders'"
+      class="px-4 py-1"
+      color="primary"
+      mat-raised-button
+      style="border-radius: 20px"
+    >
+      Track Order
+    </button>
+  </div>
+</div>

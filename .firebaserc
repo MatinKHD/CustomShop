@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "shop-26027": {
+      "hosting": {
+        "shop": [
+          "shop-26027"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "shop-26027"
+  }
+}

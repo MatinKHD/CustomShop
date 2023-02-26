@@ -1,0 +1,5 @@
+@import 'src/styles';
+
+.register-container{
+  @include form-container(10px);
+}

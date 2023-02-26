@@ -1,0 +1,36 @@
+/*angular material*/
+@use '../node_modules/@angular/material' as mat;
+
+@include mat.core();
+/*theme*/
+@import "theme";
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+/* Matin Core */
+@import "assets/scss/core/core";
+/* You can add global styles to this file, and also import other style files */
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@mixin form-container($border-radius) {
+  box-shadow: 0px 0px 20px 5px #c3c3c3;
+  background: #1de9b61c;
+  border-radius: $border-radius;
+  padding: 15px;
+  margin: 20px auto;
+
+}

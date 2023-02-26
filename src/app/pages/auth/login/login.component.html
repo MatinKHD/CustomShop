@@ -1,0 +1,21 @@
+<div class="row container d-flex justify-content-center align-items-center login-container">
+  <div class="col-12 d-flex justify-content-center">
+    <h4>Login</h4>
+  </div>
+  <div [formGroup]="loginForm" class="col-12 row" style="max-width: 60%">
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Enter your email</mat-label>
+      <input formControlName="email" matInput placeholder="pat@example.com" required>
+      <mat-error *ngIf="email?.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Enter Your Password</mat-label>
+      <input formControlName="password" matInput placeholder="***" required type="password">
+    </mat-form-field>
+    <div class="col-12">
+      <button (click)="loginClicked()" class="px-5 py-2" color="primary" mat-flat-button style="border-radius: 5px">
+        Login
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<div class="" style="width: 100%">
+
+  <div class="carousel d-flex justify-content-center align-items-center">carousel</div>
+
+
+
+  <!----main container------------------------------------------------------------------>
+  <div class="row d-flex m-0" id="main-container">
+
+
+    <!--category , search box , product card---------------->
+    <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-9 col-xxl-9 row">
+      <!---category----------------------------------------------------------------------------------->
+
+      <!--row category----------->
+      <div
+        class="
+          d-flex
+          mx-auto
+          flex-column flex-sm-column flex-lg-row flex-xl-row
+          justify-content-center align-items-center
+          row-category
+          col-12"
+        style="width: 90%"
+      >
+        <a class="row-list-option" routerLink="/">All Categories</a>
+        <a
+          *ngFor="let category of categories"
+          [queryParams]="{category :category}"
+          class="row-list-option"
+          routerLink="/"
+        >
+          {{category}}
+        </a>
+      </div>
+
+      <!--category end----------------------------------------------------------------------------------->
+
+
+      <!--search and product card------------------------------------------------------------------------>
+      <div class="col-12 row d-flex justify-content-center align-items-center">
+
+        <!--search box-------------------------------------->
+        <div class="col-12" id="search-box">
+          <div class="filter-box">
+            <div class="filter-container">
+              <div class="filter-input-container">
+                <input
+                  (keyup)="applyFilter($event)"
+                  placeholder="Search in Products"
+                  required
+                  type="search"
+                >
+              </div>
+              <div class="filter-icon-container">
+                <a class="nav-link">
+                  <mat-icon aria-hidden="false" color="primary" fontIcon="home">search</mat-icon>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---search box end------------------------------->
+
+        <!---product card------------------------------->
+        <div  class="col-12 ps-lg-5 ps-xl-5">
+          <!--------loading--------------->
+          <div *ngIf="loading" class="d-flex justify-content-center align-items-center">
+            <div class=" spinner-border text-primary m-5" style="width: 5rem; height: 5rem;color: #1de9b6 !important;">
+              <span class="sr-only"></span>
+            </div>
+          </div>
+          <div *ngIf="!loading" class="row d-flex justify-content-start align-items-center">
+            <div
+              *ngFor="let product of FProducts"
+              [routerLink]="['/product/detail', product.id]"
+              class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4"
+            >
+              <app-product-card [product]="product"></app-product-card>
+            </div>
+          </div>
+        </div>
+        <!---product card end--------------------------->
+
+      </div>
+
+    </div>
+
+    <!---shopping cart------------------------------->
+    <div
+      class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 d-flex justify-content-center"
+    >
+      <app-shopping-cart style="
+      width: 100%;"></app-shopping-cart>
+    </div>
+    <!---shopping cart end--------------------------->
+
+  </div>
+  <!---main container end-------------------------------------------------------------------------------------------->
+
+</div>

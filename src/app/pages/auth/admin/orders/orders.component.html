@@ -1,0 +1,43 @@
+<div class="table-container d-flex flex-column justify-content-center align-items-center m-xl-5 m-lg-4 m-md-3">
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Username</th>
+      <th>Phone Number</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders; let i = index">
+      <th>{{i + 1}}</th>
+      <!----username---->
+      <td>
+        <span>{{order[1].user.name}}</span>
+        <span>{{order[1].user.lastname}}</span>
+      </td>
+      <!----phone number ---->
+      <td>
+        {{order[1].user.phoneNumber}}
+      </td>
+      <!----- order date ---->
+      <td>
+        {{date}}
+      </td>
+      <!--- details button container ---->
+      <td class="d-flex justify-content-end">
+        <button
+          color="primary"
+          mat-raised-button
+          style="border-radius: 5px"
+          [routerLink]="['/auth/admin/order', order[0]]"
+        >
+          Details
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

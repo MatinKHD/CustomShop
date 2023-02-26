@@ -1,0 +1,50 @@
+<ul aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+  <!----------------loading the user role----------------->
+  <div *ngIf="roleLoading" class="d-flex justify-content-center align-items-center">
+    <div class=" spinner-border text-primary m-5" style="color: #1de9b6 !important;">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+
+  <!--------dropdown shows after the user role is get form server---->
+  <div *ngIf="!roleLoading">
+
+    <!------------user profile-------------------->
+    <li>
+      <a [routerLink]="['/user/my-profile', auth.currentUser?.displayName]" class="dropdown-item">My Profile</a>
+    </li>
+
+    <!------------user profile-------------------->
+    <li>
+      <a [routerLink]="'/user/my-orders'" class="dropdown-item">My Orders</a>
+    </li>
+
+    <!--------------manage users page--------------------->
+    <!---note: this page is only accessible if you are the owner of the application-->
+    <li *ngIf="isUserOwner">
+      <a [routerLink]="'auth/admin/manage-users'" class="dropdown-item">Manage Users</a>
+    </li>
+
+    <!--------------manage products page--------------------->
+    <!---note: this page is only accessible if you are the admin of the application-->
+    <li *ngIf="isUserAdmin">
+      <a class="dropdown-item" routerLink="auth/admin/manage-products">Manage Products</a>
+    </li>
+
+    <!--------------follow up orders page --------------------->
+    <li *ngIf="isUserAdmin">
+      <a class="dropdown-item" routerLink="auth/admin/orders">Followup Orders</a>
+    </li>
+
+    <!---------------this button will logout the user--------------------->
+    <li *ngIf="userService.user$ | async as user">
+      <a
+        (click)="authService.logout()"
+        class="dropdown-item"
+        style="cursor: pointer"
+      >
+        Logout
+      </a>
+    </li>
+  </div>
+</ul>

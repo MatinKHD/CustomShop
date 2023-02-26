@@ -1,0 +1,64 @@
+<!--------loading------------------------------------------------------------------------------------------->
+<div *ngIf="loading" class="d-flex justify-content-center align-items-center">
+  <div class=" spinner-border text-primary m-5" style="width: 5rem; height: 5rem;color: #1de9b6 !important;">
+    <span class="sr-only"></span>
+  </div>
+</div>
+
+<!--------table container------------------------------------------------------------------------------------------->
+<div *ngIf="!loading"
+     class="table-container d-flex flex-column justify-content-center align-items-center m-xl-5 m-lg-4 m-md-3 m-0"
+>
+
+  <!-----------add new product button box------------------------------------>
+  <div class="d-flex justify-content-center align-items-center">
+    <button
+      [routerLink]="['/auth/admin/manage-product' , 'new']"
+      class="px-2 py-1"
+      color="primary"
+      mat-raised-button
+      style="border-radius: 5px"
+    >
+      add Product
+    </button>
+  </div>
+
+  <!--search----------------------------------------------------------------->
+  <mat-form-field style="width: 50% !important;">
+    <mat-label>Search User</mat-label>
+    <input #input (keyup)="applyFilter($event)" matInput placeholder="search user" type="search">
+  </mat-form-field>
+
+  <!----table of users------------------------------------------------------------>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Image Url</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of fProductSource">
+      <td>{{product.title}}</td>
+      <td>{{product.category}}</td>
+      <td>{{product.price}}</td>
+      <td>
+        <img [src]="product.imageUrl" alt="" style="width: 50px; height: 50px">
+      </td>
+      <!--detail button---------------------------->
+      <td>
+        <button
+          [routerLink]="['/auth/admin/manage-product' , product.id]"
+          color="primary" mat-raised-button
+          style="border-radius: 5px"
+        >
+          Details
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

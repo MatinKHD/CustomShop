@@ -1,0 +1,151 @@
+<div class="row my-2 mx-0 mx-md-2 mx-lg-3 mx-xl-4 mx-xxl-5">
+  <!--------loading------------------------------------------------>
+  <div *ngIf="loading" class="d-flex justify-content-center align-items-center">
+    <div class=" spinner-border text-primary m-5" style="width: 5rem; height: 5rem;color: #1de9b6 !important;">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+  <!--------user container------------------------------------------------>
+  <div *ngIf="!loading" class="row user-container">
+
+    <!----button that redirect user to landing page--------------------------------->
+    <div class="d-flex justify-content-start ms-0 ms-lg-2 ms-xl-2 ms-xxl-2 my-3">
+      <button
+        [routerLink]="'/landing'"
+        class="px-2 py-1"
+        color="accent"
+        mat-raised-button
+        style="border-radius: 5px"
+      >
+        <span style="font-weight: bold">&hookleftarrow;</span> back to Home
+      </button>
+    </div>
+
+    <!----------user Image container-------------------->
+    <div
+      class="
+        col-12 col-sm-12 col-md-5 col-lg-3 col-xl-2 col-xxl-1
+        user-image-container
+        d-flex flex-column justify-content-between
+        mx-0 mx-md-1 mx-lg-2 mx-xl-3 mx-xxl-4
+        my-2 my-md-0 my-lg-0 my-xl-0 my-xxl-0
+      "
+    >
+
+      <!---image preview----->
+      <div class="d-flex justify-content-center align-items-center profile-preview">
+        <img [src]="imagePreview ? imagePreview : user.imageUrl" alt="">
+      </div>
+
+      <!---image input--->
+      <div class="d-flex justify-content-center profile-select">
+        <label for="profilePhotoSelect">
+          <span class="material-icons">add_photo_alternate</span><br>
+          add or change Profile Picture
+          <input (change)="onSelectPhoto($event)" id="profilePhotoSelect" type="file">
+        </label>
+      </div>
+    </div>
+
+    <!----------user Info container-------------------->
+    <!-----user detail and edit user form----->
+    <div
+      class="
+       col-12 col-sm-12 col-md-6 col-lg-8 col-xl-9 col-xxl-10
+       user-info-container
+       d-flex flex-column justify-content-center align-items-center">
+
+      <!-----user detail----->
+      <div *ngIf="!isUserEditing" id="userDetail">
+        <div class="d-flex flex-column justify-content-center user-detail-container">
+          <!----user id------>
+          <div>
+            <label>Id</label>
+            <p>{{user?.id}}</p>
+          </div>
+          <!----user name------>
+          <div>
+            <label>Name</label>
+            <p>{{user?.name}}</p>
+          </div>
+          <!----user last name------>
+          <div>
+            <label>LastName</label>
+            <p>{{user?.lastname}}</p>
+          </div>
+          <!----user email------>
+          <div>
+            <label>Email</label>
+            <p>{{user?.email}}</p>
+          </div>
+          <!----user phone number------>
+          <div>
+            <label>Phone-Number</label>
+            <p>{{user?.phoneNumber}}</p>
+          </div>
+        </div>
+      </div>
+      <!-----user form----->
+      <div *ngIf="isUserEditing" [formGroup]="editUserForm" id="userForm">
+        <div
+          class="d-flex flex-column justify-content-center user-form-container"
+        >
+
+          <!------------user name--------------->
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input formControlName="name" matInput placeholder="Enter name" required type="text">
+          </mat-form-field>
+
+          <!------------user lastname--------------->
+          <mat-form-field appearance="fill">
+            <mat-label>Lastname</mat-label>
+            <input formControlName="lastname" matInput placeholder="Enter lastname" required type="text">
+          </mat-form-field>
+
+          <!------------user phoneNumber --------------->
+          <mat-form-field appearance="fill">
+            <mat-label>Phone-Number</mat-label>
+            <input formControlName="phoneNumber" matInput placeholder="Enter Phone Number" required type="tel">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-----edit user button----->
+      <div class="d-flex justify-content-center align-items-center button-container">
+        <button
+          (click)="isUserEditing = !isUserEditing"
+          *ngIf="!isUserEditing"
+          class="px-2 py-0"
+          color="accent"
+          mat-raised-button
+        >
+          Edit <span class="material-icons">edit</span>
+        </button>
+        <button
+          (click)="isUserEditing = !isUserEditing"
+          *ngIf="isUserEditing"
+          class="px-2 py-0"
+          color="accent"
+          mat-raised-button
+        >
+          Done <span class="material-icons">done</span>
+        </button>
+      </div>
+    </div>
+
+    <!-------save button container-------------------->
+    <div class="d-flex justify-content-center align-items-center save-button-container my-5">
+      <button
+        (click)="save()"
+        [disabled]="saveLoading"
+        color="primary"
+        mat-raised-button
+      >
+        <span class="sr-only">Save</span>
+        <span *ngIf="saveLoading" aria-hidden="true" class="spinner-grow spinner-grow-sm" role="status"></span>
+      </button>
+    </div>
+  </div>
+
+</div>

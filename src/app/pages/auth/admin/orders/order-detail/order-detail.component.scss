@@ -1,0 +1,57 @@
+.container {
+  margin: 18px 10px !important;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 5px #00000030;
+
+  h4 {
+    color: #607d8b;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+    padding-top: 5px;
+  }
+
+  .material-icons {
+    font-size: 18px;
+    color: #607d8b;
+  }
+
+  .divider {
+    height: 1px;
+    width: 90%;
+    background: #0000001c;
+    font-weight: 300;
+    margin: 10px auto;
+  }
+
+  .cds {
+    font-weight: 450;
+
+    span {
+      font-weight: 400;
+      color: #607d8b;
+      margin: 0 10px 0 5px;
+    }
+  }
+
+  .sdc {
+    font-weight: 450;
+    color: #607d8b;
+
+    span {
+      font-weight: 400;
+      margin: 0 10px 0 5px;
+    }
+  }
+}
+
+.user-img {
+  text-align: center;
+  margin-bottom: 10px;
+
+  img {
+    border-radius: 50%;
+    width: 120px;
+  }
+}
+

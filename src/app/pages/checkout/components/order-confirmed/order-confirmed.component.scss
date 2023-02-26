@@ -1,0 +1,42 @@
+
+.done-icon-container {
+  color: #009688;
+
+  :first-child {
+    position: relative;
+    top: 0;
+    left: 60px;
+    height: 120px;
+    width: 120px;
+    background: #009688;
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  :last-child {
+    font-size: 100px;
+    background: #ffffff;
+    border-radius: 50%;
+    position: relative;
+    right: 50px;
+  }
+}
+
+.congratulation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  text-align: center;
+
+  :first-child {
+    font-weight: 500;
+    font-size: 25px;
+  }
+
+  :last-child {
+    font-weight: 400;
+    color: #607d8b;
+    font-size: 18px;
+  }
+}

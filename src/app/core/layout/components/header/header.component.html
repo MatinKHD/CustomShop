@@ -1,0 +1,120 @@
+<nav class="navbar navbar-expand-lg navbar-scroll nav-color">
+  <div class="container-fluid">
+
+    <!------------ nav bar toggle for mobile version--------------->
+    <button
+      (click)="isMenuCollapsed = !isMenuCollapsed"
+      class="navbar-toggler"
+      style="border: none !important;"
+      type="button">
+      <span class="material-icons">menu</span>
+    </button>
+    <!--------------responsive design element------------------------------->
+    <div
+      [ngbCollapse]="isMenuCollapsed"
+      class="collapse navbar-collapse">
+
+      <!-----nav bar items that designed at the right of the p------------>
+      <ul class="navbar-nav me-auto">
+
+        <!--------------checkout page--------------------->
+        <li class="nav-item active">
+          <a (click)="isMenuCollapsed = true" [routerLink]="'/checkout/review-cart'" class="nav-link px-3">
+            <span class="d-flex">
+               <span class="badge badge-pill bg-danger">{{shoppingCartItemsCount}}</span>
+               <span class="material-icons">shopping_cart</span>
+            </span>
+          </a>
+        </li>
+
+        <!--------------home page--------------------->
+        <li class="nav-item">
+          <a (click)="isMenuCollapsed = true" [routerLink]="'landing'" class="nav-link px-3 d-flex">
+            <mat-icon aria-hidden="false" fontIcon="home" style="padding: 0">home</mat-icon>
+            <span class="px-1 py-1">Home</span>
+          </a>
+        </li>
+      </ul>
+
+      <!---------nav bar items that designed at the left of the page--------->
+      <ul class="navbar-nav">
+
+        <!--------------about us page--------------------->
+        <li class="nav-item">
+          <a (click)="isMenuCollapsed = true" class="nav-link px-3">about us</a>
+        </li>
+
+        <!--------------collaboration page----------------->
+        <li class="nav-item active">
+          <a (click)="isMenuCollapsed = true" class="nav-link px-3">collaboration</a>
+        </li>
+
+        <!--------------contact us page--------------------->
+        <li class="nav-item">
+          <a (click)="isMenuCollapsed = true" class="nav-link px-3">contact us</a>
+        </li>
+
+        <!--------------login page--------------------->
+        <li
+          *ngIf="!(userService.user$ | async)"
+          class="nav-item px-2 my-2 my-md-0">
+          <button
+            (click)="isMenuCollapsed = true"
+            [routerLink]="'auth/login'"
+            class="nav-link px-3"
+            color="accent"
+            mat-raised-button
+            style="border-radius: 10px"
+          >Login
+          </button>
+        </li>
+
+        <!--------------register page--------------------->
+        <li
+          *ngIf="!(userService.user$ | async)"
+          class="nav-item px-2 my-2 my-md-0">
+          <button
+            (click)="isMenuCollapsed = true"
+            [routerLink]="'auth/register'"
+            class="nav-link px-3"
+            color="primary"
+            mat-raised-button
+            style="border-radius: 10px"
+          >Register
+          </button>
+        </li>
+
+        <!---user page that is dropdown------------------->
+        <!---note: for authenticated users------------------->
+        <li
+          *ngIf="(userService.user$ | async)"
+          class="nav-item dropdown"
+          ngbDropdown
+          style="box-shadow: 0 0 20px 0 #12cb9a;border-radius: 5px;"
+        >
+          <!----------------loading the user----------------->
+          <div *ngIf="userLoading" class="d-flex justify-content-center align-items-center">
+            <div class=" spinner-border" style="color: #00695c !important; width: 30px;height: 30px">
+              <span class="sr-only"></span>
+            </div>
+          </div>
+          <a
+            *ngIf="!userLoading "
+            aria-expanded="false"
+            class="nav-link dropdown-toggle px-3 pt-1 "
+            data-bs-toggle="dropdown"
+            id="navbarDropdown"
+            ngbDropdownToggle
+            role="button"
+          >
+            <span class="me-2">{{this.user?.name}}</span>
+            <img [src]="user?.imageUrl" style="width: 30px;height: 30px; border-radius: 50%">
+          </a>
+
+          <!--------------dropdown container--------------------->
+              <app-navbar-dropdown [auth]="auth"></app-navbar-dropdown>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

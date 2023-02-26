@@ -1,0 +1,76 @@
+<app-progress-bar [circlePosition]="30" [progressWidth]="0" [step1]="true"></app-progress-bar>
+
+<!----form that contain name lastname phone number and address and zipcode
+ and two buttons one for get back to shopping and one for next step(payment)--->
+<div [formGroup]="deliveryForm" class="m-auto row" style="max-width: 40%">
+  <!------this form contains 7 inputs name, lastname, email, phone-number, country, city, address and zip-code ---------->
+  <!-------name form field------>
+  <mat-form-field appearance="fill" class="col-12">
+    <mat-label>Name</mat-label>
+    <input formControlName="name" matInput required type="text">
+  </mat-form-field>
+
+  <!-------lastname form field------>
+  <mat-form-field appearance="fill" class="col-12">
+    <mat-label>Lastname</mat-label>
+    <input formControlName="lastname" matInput required type="text">
+  </mat-form-field>
+
+  <!-------phoneNumber form field------>
+  <mat-form-field appearance="fill" class="col-12">
+    <mat-label>Phone</mat-label>
+    <input formControlName="phone" matInput required type="phoneNumber">
+  </mat-form-field>
+
+  <!-------country and city form field------>
+  <div
+    class="col-12 d-flex flex-column flex-sm-column flex-md-column flex-lg-row flex-xl-row flex-xxl-row">
+    <mat-form-field appearance="fill" class="me-0 me-sm-0 me-md-0 me-lg-5 me-xl-5 me-xxl-5">
+      <mat-label>Country</mat-label>
+      <mat-select formControlName="country" required>
+        <mat-option value="ایران">ایران</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <mat-select formControlName="city" required>
+        <mat-option *ngFor="let city of citiesArray" [value]="city">{{city}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-------address form field------>
+  <mat-form-field appearance="fill" class="col-12">
+    <mat-label>Address</mat-label>
+    <textarea formControlName="address" matInput required></textarea>
+  </mat-form-field>
+
+  <!-------zipcode form field------>
+  <mat-form-field appearance="fill" class="col-12">
+    <mat-label>Zipcode</mat-label>
+    <input formControlName="zipcode" matInput required type="number">
+  </mat-form-field>
+</div>
+
+
+<!-------------button container------------------------>
+<div class="m-auto" style="width: 70%">
+  <div class="btn-container d-flex justify-content-between align-items-center">
+    <button
+      (click)="deleteUserDeliveryInformation()"
+      mat-raised-button
+      routerLink="landing"
+    >
+      <span style="font-weight: bold">&hookleftarrow;</span>
+      Back to Shopping
+    </button>
+    <button
+      (click)="userDeliveryInformation()"
+      [disabled]="deliveryForm.invalid" [routerLink]="'/checkout/payment'"
+      color="primary"
+      mat-raised-button
+    >
+      Next step
+    </button>
+  </div>
+</div>

@@ -1,0 +1,137 @@
+@import "src/styles";
+
+$box-shadow: 0 0 2px 0 #00695c;
+
+.product-detail-container {
+  @include form-container(15px);
+  width: 90% !important;
+  margin: 40px auto;
+
+
+  .price {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .product-image-container {
+    width: 70%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: $box-shadow;
+
+    .image-container {
+      flex: 0 0 auto;
+      overflow: hidden;
+      width: 100%;
+      border-radius: 5px;
+
+      img {
+        width: 100% !important;
+      }
+    }
+
+    .add-to-cart {
+      flex: 0 0 auto;
+      overflow: hidden;
+      width: 100%;
+      border-radius: 0 0 5px 5px;
+
+      .update-quantity {
+        display: flex;
+        flex-flow: row nowrap;
+
+        * {
+          padding: 5px 0;
+        }
+
+        button {
+          flex: .1 0 auto;
+        }
+
+        div {
+          flex: 1 0 auto;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .shop-now-container {
+    width: 70%;
+    margin: auto;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .product-description-container {
+    display: flex;
+    flex-flow: column nowrap;
+
+    .divider {
+      background: #0000001c;
+      width: 100%;
+      height: 1px;
+    }
+
+    .header {
+      padding: 0 0 10px 10px;
+
+      .title {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .rating {
+        font-size: 10px;
+        padding: 5px 0 5px 10px;
+      }
+    }
+
+    .product-category-column {
+      padding: 10px 0 10px 10px;
+      flex: 0 0 auto;
+      display: flex;
+      font-size: 12px;
+      font-weight: 400;
+
+      :last-child {
+        margin: 0 0 0 10px;
+      }
+    }
+
+    .product-description-column {
+      padding: 15px 0 15px 10px;
+      flex: 0 0 auto;
+      display: flex;
+      flex-flow: column;
+      font-size: 10px;
+
+      :first-child {
+        font-size: 12px;
+        font-weight: bold;
+      }
+    }
+
+    .product-price-column {
+      flex: 0 0 auto;
+      display: flex;
+      font-size: 15px;
+      padding: 15px 0 0 10px;;
+
+      :first-child {
+        font-weight: 400;
+        margin: 0 10px 0 0;
+      }
+
+      :last-child {
+        font-weight: 300;
+      }
+    }
+  }
+
+}

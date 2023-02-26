@@ -1,0 +1,122 @@
+<!------loading--------------------------------------------------------------------------------------------------------->
+<div *ngIf="loading" class="d-flex justify-content-center align-items-center">
+  <div class=" spinner-border text-primary m-5" style="width: 5rem; height: 5rem;color: #1de9b6 !important;">
+    <span class="sr-only"></span>
+  </div>
+</div>
+
+<!------User Form--------------------------------------------------------------------------------------------------------->
+<div *ngIf="!loading" [formGroup]="userForm"
+     class="row container d-flex justify-content-center align-items-center edit-user-container">
+  <!----button that redirect user to user table page--------------------------------->
+  <div class="d-flex justify-content-start ms-5 me-2">
+    <button
+      [routerLink]="'/auth/admin/manage-users'"
+      class="px-2 py-1"
+      color="accent"
+      mat-raised-button
+      style="border-radius: 5px"
+    >
+      <span style="font-weight: bold">&hookleftarrow;</span> back to users table
+    </button>
+  </div>
+
+  <!----header that shows user id--------------------------------->
+  <div class="d-flex justify-content-center align-items-center header-container mt-2">
+    <h2>
+      <span class="user-id">{{this.userForm?.get('id')?.value}}</span>
+      <span>Details</span>
+    </h2>
+  </div>
+
+  <!-------------container that shows user role and change role button-------------------->
+  <div
+    class="
+    d-flex
+    flex-column flex-md-row flex-lg-row flex-xl-row
+    justify-content-between
+    align-items-center
+     m-3
+     role-container"
+  >
+    <h6 class="ms-3">
+      <span>User Role:</span>
+      <span *ngIf="isUserAdmin" class="user-role">Admin</span>
+      <span *ngIf="!isUserAdmin" class="user-role">Regular User</span>
+    </h6>
+    <div class="d-flex justify-content-center">
+      <button
+        (click)="removeAdmin()"
+        *ngIf="isUserAdmin"
+        class="px-3 py-1 mx-1"
+        color="warn"
+        mat-raised-button
+        style="border-radius: 5px"
+      >
+        Make This Regular User
+      </button>
+      <button
+        (click)="makeUserAdmin()"
+        *ngIf="!isUserAdmin"
+        class="px-3 py-1 mx-1"
+        color="primary"
+        mat-raised-button
+        style="border-radius: 5px"
+      >
+        Make This User Admin
+      </button>
+    </div>
+  </div>
+
+  <!----form field container--------------------------------->
+  <div class="col-12 row m-3" style="max-width: 75%;">
+    <!-----ID------->
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>ID</mat-label>
+      <input formControlName="id" matInput placeholder="Enter ID" required type="text">
+    </mat-form-field>
+
+    <!-----Name------->
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput placeholder="Enter Name" required type="text">
+    </mat-form-field>
+
+    <!-----lastname------->
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Lastname</mat-label>
+      <input formControlName="lastname" matInput placeholder="Enter lastname" required type="text">
+    </mat-form-field>
+
+    <!-----email------->
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="Enter Email" required type="email">
+    </mat-form-field>
+
+    <!-----password------->
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" matInput placeholder="Enter password" required type="text">
+    </mat-form-field>
+
+    <!-----Phone Number------->
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Phone Number</mat-label>
+      <input formControlName="phoneNumber" matInput placeholder="Enter PhoneNumber" required type="number">
+    </mat-form-field>
+
+    <!-----button box------->
+    <div class="d-flex justify-content-center my-5">
+      <button
+        [routerLink]="'/auth/admin/manage-users'"
+        class="px-3 py-1 mx-1"
+        color="accent"
+        mat-raised-button
+        style="border-radius: 5px"
+      >
+        Back to Users Table
+      </button>
+    </div>
+  </div>
+</div>

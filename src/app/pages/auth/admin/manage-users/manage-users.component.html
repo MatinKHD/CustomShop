@@ -1,0 +1,49 @@
+<!--------loading------------------------------------------------------------------------------------------->
+<div *ngIf="loading" class="d-flex justify-content-center align-items-center">
+  <div class=" spinner-border text-primary m-5" style="width: 5rem; height: 5rem;color: #1de9b6 !important;">
+    <span class="sr-only"></span>
+  </div>
+</div>
+
+<!--------table container------------------------------------------------------------------------------------------->
+<div *ngIf="!loading"
+     class="table-container d-flex flex-column justify-content-center align-items-center m-xl-5 m-lg-4 m-md-3"
+>
+
+  <!--search----------------------------------------------------------------->
+  <mat-form-field style="width: 50% !important;">
+    <mat-label>Search User</mat-label>
+    <input #input (keyup)="applyFilter($event)" matInput placeholder="search user" type="search">
+  </mat-form-field>
+
+  <!----table of users------------------------------------------------------------>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>LastName</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of fUserSource; let i = index;">
+      <th>{{i + 1}}</th>
+      <td>{{user.name}}</td>
+      <td>{{user.lastname}}</td>
+      <td>{{user.email}}</td>
+      <!--detail button---------------------------->
+      <td>
+        <button
+          [routerLink]="['/auth/admin/manage-user' , user.id]"
+          color="primary" mat-raised-button
+          style="border-radius: 5px"
+        >
+          Details
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

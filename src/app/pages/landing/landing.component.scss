@@ -1,0 +1,140 @@
+$box-shadow: 0 0 2px 0 #00695c;
+
+.category {
+  //border: 1px solid #00695c;
+  border-radius: 10px 30px;
+  margin: 100px 0 0 10px;
+  background: #1de9b6;
+  color: #00695c;
+  padding: 10px 25px;
+  .list-option {
+    color: #ffffff;
+    overflow: hidden;
+  }
+}
+.row-category{
+  color: #00695c;
+  padding: 10px 25px;
+  background: #0000000A;
+  border-radius: 10px;
+
+  .row-list-option{
+    color: #1de9b6;
+    overflow: hidden;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: all 200ms ease-in-out;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .row-list-option:hover{
+    box-shadow: $box-shadow;
+    color: #00695c;
+    background: #1de9b6;
+
+  }
+}
+
+.filter-box {
+  max-width: 75%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .filter-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: $box-shadow;
+
+
+    .filter-input-container {
+      overflow: hidden;
+      flex: 1 0 auto;
+
+      ::placeholder {
+        color: #009688;
+      }
+
+      input {
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        width: 100%;
+        padding: 10px;
+        color: #009688;
+        background: transparent;
+      }
+    }
+
+    .filter-icon-container {
+      overflow: hidden;
+      flex: .05 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+  }
+}
+
+
+
+$box-shadow: 0 0 2px 0 #00695c;
+
+.product-card {
+  width: 100% !important;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  background: #1de9b6;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: $box-shadow;
+
+  .product-card-image-container {
+    flex: 0 0 250px;
+    overflow: hidden;
+    width: 100% !important;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    img {
+      width: 100%;
+      height: 250px;
+    }
+  }
+
+  .product-card-detail {
+    flex: 0 0 90px;
+    display: flex;
+    flex-flow: nowrap column;
+    justify-content: space-between;
+    align-items: start;
+    padding: 0;
+
+    .description {
+      flex: 0 0 60px;
+      font-size: 16px;
+      font-weight: bold;
+      overflow: hidden;
+    }
+
+    .price {
+      flex: 0 0 15px;
+      font-size: 16px;
+    }
+
+    .add-to-cart {
+      flex: 0 0 15px;
+      width: 100%;
+    }
+  }
+}
+
+.product-card:hover {
+  box-shadow: 0 0 7px 0 #00695c;
+}

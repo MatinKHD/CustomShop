@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+@import '~bootstrap/scss/bootstrap';
+
+@include mat.core();
+$shop-primary: mat.define-palette(mat.$teal-palette);
+$shop-accent: mat.define-palette(mat.$blue-gray-palette);
+$shop-warn: mat.define-palette(mat.$red-palette);
+
+$my-light-theme: mat.define-light-theme((
+  color:(
+    primary: mat.define-palette(mat.$teal-palette),
+    accent: mat.define-palette(mat.$blue-gray-palette),
+    warn: mat.define-palette(mat.$red-palette)
+  )
+));
+
+@include mat.all-component-themes($my-light-theme);

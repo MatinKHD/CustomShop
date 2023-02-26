@@ -1,0 +1,38 @@
+<!-------------orders array container that include dispatched an delivered order-------------------->
+<div class="orders-container w-100 w-lg-70 w-xl-70 w-xxl-70 mx-auto mt-5">
+  <!-----order container -------------------------->
+  <div
+    *ngFor="let order of orders"
+    [class.deliverd]="isDelivered"
+    [class.dispatched]="!isDelivered"
+    class="order row"
+  >
+    <div class="order-status">
+      <li>Delivered</li>
+    </div>
+    <!----cart --------------------------->
+    <div class="col-12 col-lg-8 col-xl-8 col-xxl-8  mb-4 mb-lg-0 mb-xl-0 mb-xxl-0 carts-container">
+      <!---cart container---------->
+      <div *ngFor="let item of order.cart">
+        <!---- item container --->
+        <div class="item-container">
+          <!---item image --->
+          <div class="item-img">
+            <img [src]="item.product.imageUrl">
+          </div>
+          <!-- item title and delivered time ---->
+          <div *ngIf="isDelivered" class="item-title">{{item.product.title}}</div>
+          <div *ngIf="!isDelivered"></div>
+        </div>
+        <!-- divider -->
+        <div class="divider"></div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 col-xl-4 col-xxl-4 btn-container">
+      <button *ngIf="!isDelivered" color="primary" mat-raised-button>Track order</button>
+      <button color="primary" mat-stroked-button>View order details</button>
+      <button color="primary" mat-button>Get invoice</button>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,5 @@
+@import "src/styles";
+
+.table-container {
+  @include form-container(15px);
+}

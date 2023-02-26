@@ -1,0 +1,39 @@
+<div class="cart-container">
+  <!-------product preview and product quantity-------->
+  <div *ngFor="let item of items">
+    <div *ngIf="item.quantity > 0" class="product-preview row m-0 pt-2">
+      <div class="image-container col-3">
+        <img [src]="item.product.imageUrl">
+      </div>
+
+      <div class="description-container col-7">
+        <p>{{item.product.title}}</p>
+        <div class="update-quantity">
+          <button (click)="decrementQuantity(item.product)" color="primary">-</button>
+          <div class="price-container text-center">
+            <span>{{item.product.price * item.quantity | currency:'USD'}}</span>
+            <span>(x{{item.quantity}})</span>
+          </div>
+          <button (click)="incrementQuantity(item.product)" color="primary">+</button>
+        </div>
+      </div>
+      <div class="clear-item col-2">
+        <button (click)="removeItem(item.product)">X</button>
+      </div>
+      <div class="divider"></div>
+    </div>
+  </div>
+  <!-------Total Price-------->
+  <div class="total-price-container">
+    <p>Total Price is:</p>
+    <p>{{totalPrice | currency:'USD'}}</p>
+  </div>
+  <!-------Checkout button-------->
+  <div class="checkout-btn-container">
+    <button
+      (click)="shopNow()"
+      [routerLink]="'/checkout/delivery'"
+    >Shop Now
+    </button>
+  </div>
+</div>

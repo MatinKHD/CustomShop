@@ -1,0 +1,16 @@
+@import "src/styles";
+
+.edit-product-container,
+.product-card-container
+{
+  @include form-container(15px);
+}
+
+
+.product-card-image-container {
+  max-width: 97% !important;
+  margin: 15px auto !important;
+  box-shadow: 0px 0px 20px 5px #c3c3c3;
+  border-radius: 10px;
+}
+

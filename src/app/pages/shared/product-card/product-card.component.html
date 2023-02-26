@@ -1,0 +1,12 @@
+<div class="product-card">
+  <div class="product-card-image-container">
+    <img [src]="product?.imageUrl">
+  </div>
+  <div class="product-card-detail">
+    <div class="description">{{product?.title}}</div>
+    <div class="price">{{product?.price |  currency:'USD': true}}</div>
+<!--    <div class="add-to-cart">-->
+<!--      <button (click)="addToCart(product)" color="primary" mat-raised-button style="width: 100% !important;">Add To Cart</button>-->
+<!--    </div>-->
+  </div>
+</div>
