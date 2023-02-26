@@ -21,17 +21,32 @@ export class HeaderComponent extends Unsub {
   userLoading: boolean = false;
   user!: UserModel | null;
   shoppingCartItemsCount: number = 0
+  isUserOwner: boolean = false;
+  isUserAdmin: boolean = false;
+  roleLoading: boolean = false;
 
   constructor(
+    public authService: AuthService,
     public userService: UserService,
     private userRoleService: UserRoleService,
     private cartService: ShoppingCartService,
   ) {
     super();
     this.getUser();
-    this.totalItemCount();
+    this.totalItemCount().catch(e => console.log(e));
+    this.getRoles();
   }
 
+  private getRoles() {
+    this.roleLoading = true;
+    this.userRoleService.getRoles().pipe(takeUntil(this.unsubscribe)).forEach((roles) => {
+      let adminsId = roles ? Object.keys(roles.admins) : null;
+      let ownersId = roles ? Object.keys(roles.owners) : null;
+      this.auth.currentUser?.uid && adminsId?.includes(this.auth.currentUser?.uid) ? this.isUserAdmin = true : this.isUserAdmin = false;
+      this.auth.currentUser?.uid && ownersId?.includes(this.auth.currentUser?.uid) ? this.isUserOwner = true : this.isUserOwner = false;
+      this.roleLoading = false;
+    }).catch(error => console.log(error))
+  }
 
   private getUser() {
     this.userLoading = true

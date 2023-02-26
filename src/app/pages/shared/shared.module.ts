@@ -6,6 +6,8 @@ import {MatComponentModule} from "../mat-component.module";
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import {RouterModule} from "@angular/router";
 import { NavbarDropdownComponent } from './navbar-dropdown/navbar-dropdown.component';
+import {NgbComponentsModule} from "../ngb-components.module";
+import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -15,11 +17,12 @@ import { NavbarDropdownComponent } from './navbar-dropdown/navbar-dropdown.compo
     ProductQuantityComponent,
     NavbarDropdownComponent
   ],
-    imports: [
-        CommonModule,
-        MatComponentModule,
-        RouterModule
-    ],
+  imports: [
+    CommonModule,
+    MatComponentModule,
+
+    RouterModule,
+  ],
     exports: [
         ProductCardComponent,
         ShoppingCartComponent,
