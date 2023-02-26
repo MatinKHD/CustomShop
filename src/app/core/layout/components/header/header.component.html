@@ -21,7 +21,7 @@
         <li class="nav-item active">
           <a (click)="isMenuCollapsed = true" [routerLink]="'/checkout/review-cart'" class="nav-link px-3">
             <span class="d-flex">
-               <span class="badge badge-pill bg-danger">{{shoppingCartItemsCount}}</span>
+               <span *ngIf="cart?.items" class="badge badge-pill bg-danger">{{shoppingCartItemsCount}}</span>
                <span class="material-icons">shopping_cart</span>
             </span>
           </a>

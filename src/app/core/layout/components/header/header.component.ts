@@ -9,6 +9,7 @@ import firebase from "firebase/compat";
 import {ShoppingCartService} from "../../../../services/shopping-cart.service";
 import {Unsub} from "../../../../pages/unsub";
 import User = firebase.User;
+import {ShoppingCartsModel} from "../../../../pages/models/shoppingCartsModel";
 
 @Component({
   selector: 'app-header',
@@ -24,6 +25,7 @@ export class HeaderComponent extends Unsub {
   isUserOwner: boolean = false;
   isUserAdmin: boolean = false;
   roleLoading: boolean = false;
+  cart!: ShoppingCartsModel | null;
 
   constructor(
     public authService: AuthService,
@@ -69,6 +71,7 @@ export class HeaderComponent extends Unsub {
     try {
       (await this.cartService.getCart()).valueChanges().pipe(takeUntil(this.unsubscribe)).subscribe(cart => {
         let items = cart?.items ? Object.values(cart.items) : null;
+        this.cart = cart;
         this.shoppingCartItemsCount = 0
         items?.map(item => this.shoppingCartItemsCount += item.quantity)
       })

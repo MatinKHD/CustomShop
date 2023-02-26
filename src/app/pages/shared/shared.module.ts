@@ -6,9 +6,6 @@ import {MatComponentModule} from "../mat-component.module";
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import {RouterModule} from "@angular/router";
 import { NavbarDropdownComponent } from './navbar-dropdown/navbar-dropdown.component';
-import {NgbComponentsModule} from "../ngb-components.module";
-import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
-
 
 @NgModule({
   declarations: [
