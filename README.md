@@ -1,6 +1,6 @@
 "# Shop" 
 
-!IMPORTANT: persian uesrs must use proxy or VPN before ng-serve this project.
+!IMPORTANT: persian uesrs that use IR IP must use proxy or VPN before ng-serve this project.
 
 this project is demo project of shop that works with firebase .
 database of this project is firebase database.
@@ -20,7 +20,7 @@ this project use material custom theme and some styles.
 
 this is responsive website that works fine in any devices(but for admins it is better to use pc or laptop for better observations.
 
-!IMPORTANT: persian uesrs must use proxy or VPN before ng-serve this project.
+!IMPORTANT: persian uesrs that use IR IP must use proxy or VPN before ng-serve this project.
 
 //////////////////////////////////////////////////////////////////
 note : the concentrate of this project is not on UI its just demo project that show different features of angular and firebase.
