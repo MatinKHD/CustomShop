@@ -26,7 +26,6 @@ I write this project form searching in internet.
 ## note : the concentrate of this project is not on UI its just demo project that show different features of angular and firebase.
 
 
-##### author: the author of this project is MatinKHD 
-       
-
+##### author: 
+the author of this project is MatinKHD 
 you can see other projects that I build form: https://github.com/MatinKHD
