@@ -6,6 +6,8 @@ database of this project is `firebase database`.
 
 ## Run
 to run this project after clone in your system and run `npm install` command and after that run `ng serve` command in your terminal.
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
 
 ## IMPORTANT:
 persian uesrs that use IR IP must use proxy or VPN before ng-serve this project.
