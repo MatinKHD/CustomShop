@@ -7,6 +7,9 @@ database of this project is `firebase database`.
 ## Run
 to run this project after clone in your system and run `npm install` command and after that run `ng serve` command in your terminal.
 
+## IMPORTANT:
+persian uesrs that use IR IP must use proxy or VPN before ng-serve this project.
+
 ##
 
 this project has authorization for owner user and admin user.
