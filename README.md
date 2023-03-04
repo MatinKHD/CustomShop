@@ -4,6 +4,10 @@ this project is demo project of shop that works with `firebase`.
 database of this project is `firebase database`.
 (and for storing photos I use `firebase store`);
 
+## Run
+to run this project after clone in your system and run `npm install` command and after that run `ng serve` command in your terminal.
+
+##
 
 this project has authorization for owner user and admin user.
 (auth guard).
